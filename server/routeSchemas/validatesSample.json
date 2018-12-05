@@ -1,0 +1,448 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Validator Tester API",
+    "description": "This is a API documentaion for Validator Tester API",
+    "contact": {
+      "name": "Micky Kaufmann",
+      "email": "mickyk@gefen.online"
+    },
+    "license": {
+      "name": "Gefen",
+      "url": "https://gefentechnologies.com/"
+    }
+  },
+  "servers": [
+    {
+      "url": "/api/v1.0"
+    }
+  ],
+  "paths": {
+    "/isNumber": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "description": "isNumber",
+        "operationId": "isNumber",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "param",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/isInteger": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "description": "isInteger",
+        "operationId": "isInteger",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "param",
+            "style": "form",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/isNumberInRange1to100": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "isNumberInRange1to100",
+        "operationId": "isNumberInRange1to100",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "param",
+            "style": "form",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/isPhoneNumber": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "description": "isPhoneNumber",
+        "operationId": "isPhoneNumber",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "param",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/isDate": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "description": "isDate",
+        "operationId": "isDate",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "param",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/isStringOfLength": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "description": "isStringOfLength",
+        "operationId": "isStringOfLength",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "param",
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/pathParam/{pathParam1}/{pathParam2}": {
+      "post": {
+        "description": "pathParam",
+        "operationId": "pathParam",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pathParam1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "pathParam2",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/updateUserPhone": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "updateUserPhone",
+        "operationId": "updateUserPhone",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "currentUser",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "phone",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string",
+              "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "login",
+        "operationId": "login",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/refreshToken": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "description": "refreshToken",
+        "operationId": "refreshToken",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "old_token",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "new_token",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "description": "",
+        "operationId": "logout",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "old_token",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/doubleParamValues": {
+      "get": {
+        "description": "doubleParamValues",
+        "operationId": "doubleParamValues",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "param",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 1,
+              "maxItems": 5,
+              "uniqueItems": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "links": {},
+    "callbacks": {},
+    "schemas": {}
+  },
+  "security": []
+}
