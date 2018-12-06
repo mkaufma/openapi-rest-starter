@@ -9,8 +9,12 @@ import { readdirSync } from 'fs';
 let apiDefs = {};
 
 let handlers = {
-    validationFail: (c, req, res) => res.status(400).json({ err: c.validation.errors }),
-    notFound: (c, req, res) => res.status(404).json({ err: 'not found' }),
+    validationFail: async (c, req, res) => res.status(400).json({ err: c.validation.errors }),
+    notFound: async (c, req, res) => res.status(404).json({ err: 'not found' }),
+    notImplemented: async (c, req, res) => {
+        const { status, mock } = c.api.mockResponseForOperation(c.operation.operationId);
+        return res.status(status).json(mock);
+    }
 };
 
 readdirSync(`${__dirname}/controllers/`).forEach(file => {

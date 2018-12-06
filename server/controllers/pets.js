@@ -1,9 +1,9 @@
-function getPets(c, req, res) {
+async function getPets(c, req, res) {
     console.log(`get Pets: c:${c} req:${req} res:${res}`);
     res.status(200).json({result: 'ok'})
 }
 
-function getPetById(c, req, res) {
+async function getPetById(c, req, res) {
     res.status(200).json({ result: 'ok' });
 }
 
